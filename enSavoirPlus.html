@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AutoMotive</title>
+
+</head>
+
+<body>
+
+	<div id="header"></div>
+
+	<h1 style="text-align: center; margin-top: 8vh; padding-bottom: 2vh" >Questions récurentes</h1>
+
+	<div id="content"></div>
+
+	<div id="footer"></div>
+
+</body>
+
+<script type="text/javascript" src="./tools/loadHeadFooter.js"></script>
+<script type="text/javascript" src="./components/header.js"></script>
+<script type="text/javascript" src="./components/footer.js"></script>
+<script type="text/javascript" src="./components/article.js"></script>
+
+<script type="text/javascript">
+
+	fetch('/articles.json').then(async (res) => {
+		const articles = await res.json();
+		const html = htmlArticlesArray(articles);
+		document.getElementById("content").innerHTML = html;
+	}).catch(e => {
+		// local laod
+		const articles = [
+		{
+			"image":"https://images.caradisiac.com/images/2/4/5/2/182452/S1-confinement-peut-on-encore-acheter-vendre-une-voiture-d-occasion-627002.jpg",
+			"title":"L'achat de voiture autorisé pendant le confinement",
+			"content":"On aurait tendance à répondre d'office non. Et ce serait bien normal. Cependant, L'achat et la revente de voitures d'occasion ne sont pas totalement à l'arrêt. L'activité est toujours possible dans des situations que l'on pourrait qualifier d'urgence. Explications.",
+			"link":"https://www.caradisiac.com/confinement-peut-on-encore-acheter-vendre-une-voiture-d-occasion-182452.htm"
+		},
+		{
+			"image":"https://www.turbo.fr/sites/default/files/styles/article_690x405/public/2018-06/logo_2.jpg?itok=LBU5PWM4",
+			"title":"Choisir sa voiture d'accasion",
+			"content":"Lorsque l'on souhaite remplacer sa voiture, le simple plaisir de « changer » vient parfois occulter certains critères de choix fondamentaux. Et l'euphorie du départ risque de laisser place à la déception au bout de quelques semaines d'utilisation. Une voiture qui ne correspond pas à ses besoins, des documents manquants ou encore un entretien coûteux peuvent rapidement venir « gâcher la fête ». Voici 10 conseils pour réussir son achat en occasion.",
+			"link":"https://www.turbo.fr/conseils/voiture-occasion/occasion-les-10-conseils-pour-bien-acheter-une-voiture-129160"
+		},
+		{
+			"image":"https://www.cidj.com/sites/default/files/styles/full_article/public/2017-11/car-mechanic-2267350_1920_Pixabay.jpg?itok=JYJoiclh",
+			"title":"Achat d’un véhicule défectueux : vos recours",
+			"content":"Avant d’entamer des démarches, préparez un dossier attestant de votre bon droit.",
+			"link":"https://www.cidj.com/vie-quotidienne/consommation-argent/achat-d-un-vehicule-defectueux-vos-recours"
+		},
+		{
+			"image":"https://static1.caroom.fr/guide/wp-content/uploads/2017/02/voiture-neuve-1024x339.jpg",
+			"title":"Voiture neuve : le guide complet pour l’achat d’un véhicule neuf",
+			"content":"Vous avez l’intention d’acheter une voiture neuve pas chère, pour vous ou un membre de votre famille ? ",
+			"link":"https://www.caroom.fr/guide/voiture-neuve"
+		},
+		{
+			"image":"http://medias.lecomparateurassurance.com/image-assurance/top-10-assureurs-auto-2016.jpg",
+			"title":"Quelle assurance auto choisir ?",
+			"link":"https://www.lelynx.fr/assurance-auto/comparaison/meilleure-offre/choisir/"
+		},
+		{
+			"image":"https://www.choisir.com/sites/default/files/styles/guide_649x300/public/pictures/guide/voitures-neuves_0.jpg?itok=5sFOpZ6f",
+			"title":"Comment définir son budget automobile ?",
+			"link":"https://www.carte-grise.org/mode_emploi_changement_proprietaire.htm"
+		},
+		{
+			"image":"https://www.challenges.fr/assets/img/2011/02/14/cover-r4x3w1000-59f23bbd663e1-reforme-du-systeme-d-immatriculation-siv_0.jpg",
+			"title":"Faites votre changement de carte grise",
+			"link":"https://www.animaleco.com/blog/index.php/preparer-larrivee-de-chiot/"
+		},
+		{
+			"image":"https://static1.caroom.fr/guide/wp-content/uploads/2018/08/ConsommationVoitureNeuve-e1533896839874.jpeg",
+			"title":"Quelle voiture consomme le moins en 2020 ?",
+			"link":"https://www.caroom.fr/guide/voiture-neuve/auto-qui-consomme-le-moins"
+		}
+		]
+		const html = htmlArticlesArray(articles);
+		document.getElementById("content").innerHTML = html;
+	});
+
+	loadHeader('./components/header.html').then(e => setActiveHeader()).catch(e => console.log(e));
+	loadFooter('./components/footer.html').catch(e => console.log(e));
+
+</script>
+
+<link rel="stylesheet" type="text/css"  href="./index.css">
+
+<style type="text/css">
+
+	#content {
+		min-height: 80vh;
+	}
+
+	.article_line {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		margin-bottom: 1vh;
+	}
+
+	.article {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: 20vw;
+		border: 1px solid rgba(22,22,22,0.1);
+		padding:20px;
+	}
+
+	.article_line .article:hover {
+		cursor: pointer;
+		border: 2px solid rgb(192, 127, 30);
+	}
+
+	.article img {
+		width: 20vw;
+	}
+
+	.imgContainer {
+		height:20vh;
+		width: 20vw;
+		overflow: hidden;
+	}
+
+	@media screen and (max-width: 600px) {
+		.article {
+			width: 40vw;
+			padding: 10px;
+		}
+		.article img {
+			width: 40vw;
+		}
+
+		.imgContainer {
+			height:20vh;
+			width: 40vw;
+			overflow: hidden;
+		}
+	}
+
+</style>
+
+</html>

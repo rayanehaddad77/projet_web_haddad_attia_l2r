@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AutoMotive</title>
+
+</head>
+
+<body>
+
+	<div id="header"></div>
+
+	<div class="mainContent">
+		<p>Nous avons créé ce site dans le cadre de notre projet de fin d'année en programmation web.</p>
+		<p>Le sujet donnait le libre choix du thème du site, nous avons donc décidé de faire un site à propos de l'achat de voiture.</p>
+		<p>Nous avions pour but d'utiliser l'api AutoScout24 cepandant malgré un mail que nous avons envoyé nous n'avous toujours pas recu de réponses à ce jour. </p>
+		<p>A defaut de pouvoir utiliser l'API nous vous redirigeons donc directement sur <a href="https://www.autoscout24.fr/">le site</a> afin que vous choisissiez la voiture qui vous correspond le mieux.</p>
+	</div>
+
+	<div id="footer"></div>
+
+</body>
+
+<script type="text/javascript" src="./tools/loadHeadFooter.js"></script>
+<script type="text/javascript" src="./components/header.js"></script>
+<script type="text/javascript" src="./components/footer.js"></script>
+
+<script type="text/javascript">
+
+	fetch('./articles.json').then(async (res) => {
+		let articles = await res.json();
+		console.log(articles);
+	}).catch(e => console.error(e));
+
+	loadHeader('./components/header.html').then(e => setActiveHeader()).catch(e => console.log(e));
+	loadFooter('./components/footer.html').catch(e => console.log(e));
+
+</script>
+
+ <link rel="stylesheet" type="text/css"  href="./index.css">
+
+ <style type="text/css">
+
+ 	.mainContent {
+ 		min-height: 100vh;
+ 		display: flex;
+ 		flex-direction: column;
+ 		align-items: center;
+ 		justify-content: center;
+ 	}
+
+ </style>
+
+</html>

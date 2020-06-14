@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AutoMotive</title>
+
+</head>
+
+<body>
+
+	<div id="header"></div>
+
+	<div class="IndexContent">
+
+		<div class="landingImage">
+			<div class="backgroundColor" >
+				<img alt="logo" src="./logo-automotive.png" >
+				<div class="cutResponsive">
+					<h2>Achat de</h2>
+					<h2>voiture</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="accueil" >
+			<p>Bienvenue sur AutoMotive</p>
+			<p>Site spécialisé sur l'achat de voiture pour particulier</p>
+		</div>
+
+		<div class="textLeft" >
+			<div class="textLeftTextZoneBackground" >
+				<div class="textLeftTextZoneSpace">
+					<h1>Besoin de conseil ?</h1>
+					<P>Notre page "en savoir plus" dispose d'un grand nombre de blogs.</p>
+					<p>Vous y trouverez de nombreuses informations au sujet de l'achat de voiture</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="contentCut"></div>
+
+		<div class="textRight" >
+			<div class="textRightTextZoneBackground" >
+				<div class="textRightTextZoneSpace">
+					<h1>Envie d'une nouvelle voiture ? Vous êtes au bon endroit</h1>
+					<p>Nous fournissons une page "à vous de jouer" permettant l'achat de voiture en ligne</p>
+					<p>Ce service utilise <a href="https://www.autoscout24.fr/">AutoScout24</a>, il n'est donc disponible qu'en Europe pour le moment</p>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div id="footer"></div>
+
+</body>
+
+<script type="text/javascript" src="./tools/loadHeadFooter.js"></script>
+<script type="text/javascript" src="./components/header.js"></script>
+<script type="text/javascript" src="./components/footer.js"></script>
+
+<script type="text/javascript">
+
+	loadHeader('./components/header.html').then(e => setActiveHeader()).catch(e => console.log(e));
+	loadFooter('./components/footer.html').catch(e => console.log(e));
+
+</script>
+
+ <link rel="stylesheet" type="text/css"  href="./index.css">
+
+<style type="text/css">
+	.IndexContent {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+</style>
+
+</html>
